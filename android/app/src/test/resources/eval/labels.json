@@ -1,0 +1,112 @@
+{
+  "sessions": [
+    {
+      "file": "normal_short.json",
+      "expected": []
+    },
+    {
+      "file": "normal_calibrated.json",
+      "expected": []
+    },
+    {
+      "file": "time_short.json",
+      "expected": [
+        {
+          "kind": "time_anomaly",
+          "paragraphId": "p1"
+        }
+      ]
+    },
+    {
+      "file": "time_calibrated.json",
+      "expected": [
+        {
+          "kind": "time_anomaly",
+          "paragraphId": "p1"
+        }
+      ]
+    },
+    {
+      "file": "behavior_short.json",
+      "expected": [
+        {
+          "kind": "behavior_anomaly",
+          "paragraphId": "p2"
+        }
+      ]
+    },
+    {
+      "file": "behavior_calibrated.json",
+      "expected": [
+        {
+          "kind": "behavior_anomaly",
+          "paragraphId": "p2"
+        }
+      ]
+    },
+    {
+      "file": "semantic_short.json",
+      "expected": [
+        {
+          "kind": "semantic_anomaly",
+          "paragraphId": "p2"
+        }
+      ]
+    },
+    {
+      "file": "semantic_calibrated.json",
+      "expected": [
+        {
+          "kind": "semantic_anomaly",
+          "paragraphId": "p2"
+        }
+      ]
+    },
+    {
+      "file": "pause_decoy.json",
+      "expected": []
+    },
+    {
+      "file": "warmup_decoy.json",
+      "expected": []
+    },
+    {
+      "file": "long_gap_decoy.json",
+      "expected": []
+    },
+    {
+      "file": "explained_speech_decoy.json",
+      "expected": []
+    },
+    {
+      "file": "explained_paren_decoy.json",
+      "expected": []
+    },
+    {
+      "file": "combined_time_semantic.json",
+      "expected": [
+        {
+          "kind": "time_anomaly",
+          "paragraphId": "p1"
+        },
+        {
+          "kind": "semantic_anomaly",
+          "paragraphId": "p2"
+        }
+      ]
+    },
+    {
+      "file": "combined_behavior_semantic.json",
+      "expected": [
+        {
+          "kind": "behavior_anomaly",
+          "paragraphId": "p2"
+        },
+        {
+          "kind": "semantic_anomaly",
+          "paragraphId": "p4"
+        }
+      ]
+    }
+  ]
+}

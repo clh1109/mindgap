@@ -1,0 +1,206 @@
+{
+    "sessionCount": 15,
+    "expectedEvents": 10,
+    "detectedEvents": 10,
+    "truePositives": 10,
+    "falsePositives": 0,
+    "falseNegatives": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "byKind": {
+        "time_anomaly": {
+            "expected": 3,
+            "detected": 3,
+            "truePositives": 3
+        },
+        "behavior_anomaly": {
+            "expected": 3,
+            "detected": 3,
+            "truePositives": 3
+        },
+        "semantic_anomaly": {
+            "expected": 4,
+            "detected": 4,
+            "truePositives": 4
+        }
+    },
+    "quizzesGenerated": 10,
+    "quizSkippedEvents": 0,
+    "quizValidationFailures": 0,
+    "distractors": 20,
+    "distractorsWithMutation": 20,
+    "sameSentenceTraps": 10,
+    "difficulty": {
+        "medium": 4,
+        "hard": 6
+    },
+    "sessions": [
+        {
+            "file": "normal_short.json",
+            "expected": 0,
+            "detected": 0,
+            "truePositives": 0,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 0,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "normal_calibrated.json",
+            "expected": 0,
+            "detected": 0,
+            "truePositives": 0,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 0,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "time_short.json",
+            "expected": 1,
+            "detected": 1,
+            "truePositives": 1,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 1,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "time_calibrated.json",
+            "expected": 1,
+            "detected": 1,
+            "truePositives": 1,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 1,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "behavior_short.json",
+            "expected": 1,
+            "detected": 1,
+            "truePositives": 1,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 1,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "behavior_calibrated.json",
+            "expected": 1,
+            "detected": 1,
+            "truePositives": 1,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 1,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "semantic_short.json",
+            "expected": 1,
+            "detected": 1,
+            "truePositives": 1,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 1,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "semantic_calibrated.json",
+            "expected": 1,
+            "detected": 1,
+            "truePositives": 1,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 1,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "pause_decoy.json",
+            "expected": 0,
+            "detected": 0,
+            "truePositives": 0,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 0,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "warmup_decoy.json",
+            "expected": 0,
+            "detected": 0,
+            "truePositives": 0,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 0,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "long_gap_decoy.json",
+            "expected": 0,
+            "detected": 0,
+            "truePositives": 0,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 0,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "explained_speech_decoy.json",
+            "expected": 0,
+            "detected": 0,
+            "truePositives": 0,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 0,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "explained_paren_decoy.json",
+            "expected": 0,
+            "detected": 0,
+            "truePositives": 0,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 0,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "combined_time_semantic.json",
+            "expected": 2,
+            "detected": 2,
+            "truePositives": 2,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 2,
+            "skipped": 0,
+            "validationFailures": 0
+        },
+        {
+            "file": "combined_behavior_semantic.json",
+            "expected": 2,
+            "detected": 2,
+            "truePositives": 2,
+            "falsePositives": 0,
+            "falseNegatives": 0,
+            "quizzes": 2,
+            "skipped": 0,
+            "validationFailures": 0
+        }
+    ],
+    "failures": []
+}

@@ -1,0 +1,2775 @@
+{
+  "schemaVersion": "1.0.0",
+  "sessionId": "11729449-a806-542d-aad9-820eca2e5ee3",
+  "capture": {
+    "startedAt": "2026-11-18T09:00:00+08:00",
+    "bucketMs": 500,
+    "sources": [
+      "accessibility"
+    ]
+  },
+  "document": {
+    "docId": "doc-eval",
+    "title": "评测会话 normal_short",
+    "totalChars": 121,
+    "paragraphs": [
+      {
+        "paragraphId": "p1",
+        "index": 0,
+        "charStart": 0,
+        "charEnd": 24,
+        "preview": "把时间划分为任意长度的任期，任期用连续的整数编号"
+      },
+      {
+        "paragraphId": "p2",
+        "index": 1,
+        "charStart": 24,
+        "charEnd": 71,
+        "preview": "领导者通过 AppendEntries 复制日志，多数节点写入后更新 commit index"
+      },
+      {
+        "paragraphId": "p3",
+        "index": 2,
+        "charStart": 71,
+        "charEnd": 94,
+        "preview": "任期用连续的整数编号，每个任期最多有一个领导者"
+      },
+      {
+        "paragraphId": "p4",
+        "index": 3,
+        "charStart": 94,
+        "charEnd": 121,
+        "preview": "领导者定期生成 Snapshot 并包含最后提交的索引"
+      }
+    ]
+  },
+  "frames": [
+    {
+      "frameId": "f0000",
+      "t": 0,
+      "capturedAt": "2026-11-18T09:00:00+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 0,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": false,
+        "source": "accessibility",
+        "text": "把时间划分为任意长度的任期，任期用连续的整数编号"
+      }
+    },
+    {
+      "frameId": "f0001",
+      "t": 500,
+      "capturedAt": "2026-11-18T09:00:00.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0002",
+      "t": 1000,
+      "capturedAt": "2026-11-18T09:00:01+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 1000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0003",
+      "t": 1500,
+      "capturedAt": "2026-11-18T09:00:01.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 1500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0004",
+      "t": 2000,
+      "capturedAt": "2026-11-18T09:00:02+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 2000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0005",
+      "t": 2500,
+      "capturedAt": "2026-11-18T09:00:02.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 2500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0006",
+      "t": 3000,
+      "capturedAt": "2026-11-18T09:00:03+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 3000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0007",
+      "t": 3500,
+      "capturedAt": "2026-11-18T09:00:03.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 3500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0008",
+      "t": 4000,
+      "capturedAt": "2026-11-18T09:00:04+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 4000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0009",
+      "t": 4500,
+      "capturedAt": "2026-11-18T09:00:04.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 4500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0010",
+      "t": 5000,
+      "capturedAt": "2026-11-18T09:00:05+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 5000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0011",
+      "t": 5500,
+      "capturedAt": "2026-11-18T09:00:05.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 5500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0012",
+      "t": 6000,
+      "capturedAt": "2026-11-18T09:00:06+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 6000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0013",
+      "t": 6500,
+      "capturedAt": "2026-11-18T09:00:06.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 6500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0014",
+      "t": 7000,
+      "capturedAt": "2026-11-18T09:00:07+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 7000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0015",
+      "t": 7500,
+      "capturedAt": "2026-11-18T09:00:07.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 7500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0016",
+      "t": 8000,
+      "capturedAt": "2026-11-18T09:00:08+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 8000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0017",
+      "t": 8500,
+      "capturedAt": "2026-11-18T09:00:08.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 8500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0018",
+      "t": 9000,
+      "capturedAt": "2026-11-18T09:00:09+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 9000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0019",
+      "t": 9500,
+      "capturedAt": "2026-11-18T09:00:09.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 9500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0020",
+      "t": 10000,
+      "capturedAt": "2026-11-18T09:00:10+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 10000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0021",
+      "t": 10500,
+      "capturedAt": "2026-11-18T09:00:10.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 10500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0022",
+      "t": 11000,
+      "capturedAt": "2026-11-18T09:00:11+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 11000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0023",
+      "t": 11500,
+      "capturedAt": "2026-11-18T09:00:11.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 11500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0024",
+      "t": 12000,
+      "capturedAt": "2026-11-18T09:00:12+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 12000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0025",
+      "t": 12500,
+      "capturedAt": "2026-11-18T09:00:12.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 12500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0026",
+      "t": 13000,
+      "capturedAt": "2026-11-18T09:00:13+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 13000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0027",
+      "t": 13500,
+      "capturedAt": "2026-11-18T09:00:13.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 13500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0028",
+      "t": 14000,
+      "capturedAt": "2026-11-18T09:00:14+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 14000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0029",
+      "t": 14500,
+      "capturedAt": "2026-11-18T09:00:14.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 14500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0030",
+      "t": 15000,
+      "capturedAt": "2026-11-18T09:00:15+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 15000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0031",
+      "t": 15500,
+      "capturedAt": "2026-11-18T09:00:15.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 15500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0032",
+      "t": 16000,
+      "capturedAt": "2026-11-18T09:00:16+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 16000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0033",
+      "t": 16500,
+      "capturedAt": "2026-11-18T09:00:16.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 16500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p1",
+        "textHash": "h-p1",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0034",
+      "t": 17000,
+      "capturedAt": "2026-11-18T09:00:17+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 0,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": false,
+        "source": "accessibility",
+        "text": "领导者通过 AppendEntries 复制日志，多数节点写入后更新 commit index"
+      }
+    },
+    {
+      "frameId": "f0035",
+      "t": 17500,
+      "capturedAt": "2026-11-18T09:00:17.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0036",
+      "t": 18000,
+      "capturedAt": "2026-11-18T09:00:18+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 1000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0037",
+      "t": 18500,
+      "capturedAt": "2026-11-18T09:00:18.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 1500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0038",
+      "t": 19000,
+      "capturedAt": "2026-11-18T09:00:19+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 2000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0039",
+      "t": 19500,
+      "capturedAt": "2026-11-18T09:00:19.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 2500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0040",
+      "t": 20000,
+      "capturedAt": "2026-11-18T09:00:20+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 3000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0041",
+      "t": 20500,
+      "capturedAt": "2026-11-18T09:00:20.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 3500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0042",
+      "t": 21000,
+      "capturedAt": "2026-11-18T09:00:21+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 4000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0043",
+      "t": 21500,
+      "capturedAt": "2026-11-18T09:00:21.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 4500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0044",
+      "t": 22000,
+      "capturedAt": "2026-11-18T09:00:22+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 5000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0045",
+      "t": 22500,
+      "capturedAt": "2026-11-18T09:00:22.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 5500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0046",
+      "t": 23000,
+      "capturedAt": "2026-11-18T09:00:23+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 6000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0047",
+      "t": 23500,
+      "capturedAt": "2026-11-18T09:00:23.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 6500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0048",
+      "t": 24000,
+      "capturedAt": "2026-11-18T09:00:24+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 7000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0049",
+      "t": 24500,
+      "capturedAt": "2026-11-18T09:00:24.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 7500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0050",
+      "t": 25000,
+      "capturedAt": "2026-11-18T09:00:25+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 8000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0051",
+      "t": 25500,
+      "capturedAt": "2026-11-18T09:00:25.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 8500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0052",
+      "t": 26000,
+      "capturedAt": "2026-11-18T09:00:26+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 9000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0053",
+      "t": 26500,
+      "capturedAt": "2026-11-18T09:00:26.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 9500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0054",
+      "t": 27000,
+      "capturedAt": "2026-11-18T09:00:27+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 10000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0055",
+      "t": 27500,
+      "capturedAt": "2026-11-18T09:00:27.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 10500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0056",
+      "t": 28000,
+      "capturedAt": "2026-11-18T09:00:28+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 11000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0057",
+      "t": 28500,
+      "capturedAt": "2026-11-18T09:00:28.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 11500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0058",
+      "t": 29000,
+      "capturedAt": "2026-11-18T09:00:29+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 12000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0059",
+      "t": 29500,
+      "capturedAt": "2026-11-18T09:00:29.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 12500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0060",
+      "t": 30000,
+      "capturedAt": "2026-11-18T09:00:30+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 13000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0061",
+      "t": 30500,
+      "capturedAt": "2026-11-18T09:00:30.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 13500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0062",
+      "t": 31000,
+      "capturedAt": "2026-11-18T09:00:31+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 14000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0063",
+      "t": 31500,
+      "capturedAt": "2026-11-18T09:00:31.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 14500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0064",
+      "t": 32000,
+      "capturedAt": "2026-11-18T09:00:32+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 15000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0065",
+      "t": 32500,
+      "capturedAt": "2026-11-18T09:00:32.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 15500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0066",
+      "t": 33000,
+      "capturedAt": "2026-11-18T09:00:33+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 16000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0067",
+      "t": 33500,
+      "capturedAt": "2026-11-18T09:00:33.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 16500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p2",
+        "textHash": "h-p2",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0068",
+      "t": 34000,
+      "capturedAt": "2026-11-18T09:00:34+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 0,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": false,
+        "source": "accessibility",
+        "text": "任期用连续的整数编号，每个任期最多有一个领导者"
+      }
+    },
+    {
+      "frameId": "f0069",
+      "t": 34500,
+      "capturedAt": "2026-11-18T09:00:34.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0070",
+      "t": 35000,
+      "capturedAt": "2026-11-18T09:00:35+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 1000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0071",
+      "t": 35500,
+      "capturedAt": "2026-11-18T09:00:35.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 1500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0072",
+      "t": 36000,
+      "capturedAt": "2026-11-18T09:00:36+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 2000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0073",
+      "t": 36500,
+      "capturedAt": "2026-11-18T09:00:36.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 2500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0074",
+      "t": 37000,
+      "capturedAt": "2026-11-18T09:00:37+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 3000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0075",
+      "t": 37500,
+      "capturedAt": "2026-11-18T09:00:37.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 3500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0076",
+      "t": 38000,
+      "capturedAt": "2026-11-18T09:00:38+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 4000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0077",
+      "t": 38500,
+      "capturedAt": "2026-11-18T09:00:38.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 4500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0078",
+      "t": 39000,
+      "capturedAt": "2026-11-18T09:00:39+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 5000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0079",
+      "t": 39500,
+      "capturedAt": "2026-11-18T09:00:39.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 5500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0080",
+      "t": 40000,
+      "capturedAt": "2026-11-18T09:00:40+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 6000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0081",
+      "t": 40500,
+      "capturedAt": "2026-11-18T09:00:40.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 6500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0082",
+      "t": 41000,
+      "capturedAt": "2026-11-18T09:00:41+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 7000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0083",
+      "t": 41500,
+      "capturedAt": "2026-11-18T09:00:41.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 7500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0084",
+      "t": 42000,
+      "capturedAt": "2026-11-18T09:00:42+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 8000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0085",
+      "t": 42500,
+      "capturedAt": "2026-11-18T09:00:42.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 8500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0086",
+      "t": 43000,
+      "capturedAt": "2026-11-18T09:00:43+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 9000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0087",
+      "t": 43500,
+      "capturedAt": "2026-11-18T09:00:43.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 9500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0088",
+      "t": 44000,
+      "capturedAt": "2026-11-18T09:00:44+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 10000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0089",
+      "t": 44500,
+      "capturedAt": "2026-11-18T09:00:44.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 10500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0090",
+      "t": 45000,
+      "capturedAt": "2026-11-18T09:00:45+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 11000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0091",
+      "t": 45500,
+      "capturedAt": "2026-11-18T09:00:45.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 11500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0092",
+      "t": 46000,
+      "capturedAt": "2026-11-18T09:00:46+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 12000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0093",
+      "t": 46500,
+      "capturedAt": "2026-11-18T09:00:46.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 12500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0094",
+      "t": 47000,
+      "capturedAt": "2026-11-18T09:00:47+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 13000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0095",
+      "t": 47500,
+      "capturedAt": "2026-11-18T09:00:47.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 13500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0096",
+      "t": 48000,
+      "capturedAt": "2026-11-18T09:00:48+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 14000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0097",
+      "t": 48500,
+      "capturedAt": "2026-11-18T09:00:48.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 14500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0098",
+      "t": 49000,
+      "capturedAt": "2026-11-18T09:00:49+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 15000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0099",
+      "t": 49500,
+      "capturedAt": "2026-11-18T09:00:49.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 15500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0100",
+      "t": 50000,
+      "capturedAt": "2026-11-18T09:00:50+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 16000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0101",
+      "t": 50500,
+      "capturedAt": "2026-11-18T09:00:50.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 16500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p3",
+        "textHash": "h-p3",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0102",
+      "t": 51000,
+      "capturedAt": "2026-11-18T09:00:51+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 0,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": false,
+        "source": "accessibility",
+        "text": "领导者定期生成 Snapshot 并包含最后提交的索引"
+      }
+    },
+    {
+      "frameId": "f0103",
+      "t": 51500,
+      "capturedAt": "2026-11-18T09:00:51.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0104",
+      "t": 52000,
+      "capturedAt": "2026-11-18T09:00:52+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 1000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0105",
+      "t": 52500,
+      "capturedAt": "2026-11-18T09:00:52.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 1500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0106",
+      "t": 53000,
+      "capturedAt": "2026-11-18T09:00:53+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 2000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0107",
+      "t": 53500,
+      "capturedAt": "2026-11-18T09:00:53.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 2500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0108",
+      "t": 54000,
+      "capturedAt": "2026-11-18T09:00:54+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 3000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0109",
+      "t": 54500,
+      "capturedAt": "2026-11-18T09:00:54.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 3500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0110",
+      "t": 55000,
+      "capturedAt": "2026-11-18T09:00:55+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 4000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0111",
+      "t": 55500,
+      "capturedAt": "2026-11-18T09:00:55.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 4500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0112",
+      "t": 56000,
+      "capturedAt": "2026-11-18T09:00:56+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 5000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0113",
+      "t": 56500,
+      "capturedAt": "2026-11-18T09:00:56.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 5500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0114",
+      "t": 57000,
+      "capturedAt": "2026-11-18T09:00:57+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 6000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0115",
+      "t": 57500,
+      "capturedAt": "2026-11-18T09:00:57.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 6500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0116",
+      "t": 58000,
+      "capturedAt": "2026-11-18T09:00:58+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 7000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0117",
+      "t": 58500,
+      "capturedAt": "2026-11-18T09:00:58.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 7500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0118",
+      "t": 59000,
+      "capturedAt": "2026-11-18T09:00:59+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 8000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0119",
+      "t": 59500,
+      "capturedAt": "2026-11-18T09:00:59.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 8500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0120",
+      "t": 60000,
+      "capturedAt": "2026-11-18T09:01:00+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 9000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0121",
+      "t": 60500,
+      "capturedAt": "2026-11-18T09:01:00.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 9500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0122",
+      "t": 61000,
+      "capturedAt": "2026-11-18T09:01:01+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 10000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0123",
+      "t": 61500,
+      "capturedAt": "2026-11-18T09:01:01.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 10500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0124",
+      "t": 62000,
+      "capturedAt": "2026-11-18T09:01:02+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 11000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0125",
+      "t": 62500,
+      "capturedAt": "2026-11-18T09:01:02.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 11500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0126",
+      "t": 63000,
+      "capturedAt": "2026-11-18T09:01:03+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 12000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0127",
+      "t": 63500,
+      "capturedAt": "2026-11-18T09:01:03.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 12500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0128",
+      "t": 64000,
+      "capturedAt": "2026-11-18T09:01:04+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 13000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0129",
+      "t": 64500,
+      "capturedAt": "2026-11-18T09:01:04.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 13500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0130",
+      "t": 65000,
+      "capturedAt": "2026-11-18T09:01:05+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 14000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0131",
+      "t": 65500,
+      "capturedAt": "2026-11-18T09:01:05.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 14500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0132",
+      "t": 66000,
+      "capturedAt": "2026-11-18T09:01:06+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 15000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0133",
+      "t": 66500,
+      "capturedAt": "2026-11-18T09:01:06.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 15500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0134",
+      "t": 67000,
+      "capturedAt": "2026-11-18T09:01:07+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 16000,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    },
+    {
+      "frameId": "f0135",
+      "t": 67500,
+      "capturedAt": "2026-11-18T09:01:07.500000+08:00",
+      "action": {
+        "type": "none"
+      },
+      "features": {
+        "dwellMs": 16500,
+        "revisitCount": 0,
+        "isStalled": false
+      },
+      "screen": {
+        "docId": "doc-eval",
+        "paragraphId": "p4",
+        "textHash": "h-p4",
+        "isDuplicate": true,
+        "source": "accessibility"
+      }
+    }
+  ],
+  "stuckEvents": [],
+  "quizItems": [],
+  "notes": "eval fixture: normal_short"
+}

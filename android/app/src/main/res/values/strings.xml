@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MindGap</string>
+    <string name="accessibility_service_description">读取当前屏幕上的文字，用于识别学习过程中的卡壳点。内容仅保存在本机，未开始采集时不读取。</string>
+</resources>

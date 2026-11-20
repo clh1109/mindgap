@@ -1,0 +1,341 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mindgap.local/schema/timeline.schema.json",
+  "title": "MindGap Timeline",
+  "description": "一次学习会话的时空对齐产物。frames 为 500ms 时间桶聚合后的时间轴，是卡壳判定（M4）与找茬生成（M5）的唯一输入。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "sessionId", "capture", "document", "frames"],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "结构版本，破坏性变更时递增主版本号。"
+    },
+    "sessionId": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+      "description": "UUID v4，本地生成，不上传前不需要全局唯一。"
+    },
+    "app": {
+      "$ref": "#/$defs/AppInfo"
+    },
+    "device": {
+      "$ref": "#/$defs/DeviceInfo"
+    },
+    "capture": {
+      "$ref": "#/$defs/CaptureMeta"
+    },
+    "document": {
+      "$ref": "#/$defs/Document"
+    },
+    "frames": {
+      "type": "array",
+      "minItems": 1,
+      "description": "按 t 严格递增排序；t 为相对会话开始的毫秒偏移。",
+      "items": {
+        "$ref": "#/$defs/TimelineFrame"
+      }
+    },
+    "stuckEvents": {
+      "type": "array",
+      "description": "M4 输出。采集阶段允许为空，由判定引擎回填。",
+      "items": {
+        "$ref": "#/$defs/StuckEvent"
+      }
+    },
+    "quizItems": {
+      "type": "array",
+      "description": "M5 输出。仅用于本地校验与 UI 演示；生产环境的正确选项必须留在服务端。",
+      "items": {
+        "$ref": "#/$defs/QuizItem"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "人工标注或调试备注，例如假数据标记。"
+    }
+  },
+  "$defs": {
+    "AppInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "buildType": { "enum": ["debug", "release"] }
+      }
+    },
+    "DeviceInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model", "androidApi", "locale"],
+      "properties": {
+        "model": { "type": "string" },
+        "androidApi": { "type": "integer", "minimum": 26 },
+        "locale": { "type": "string" },
+        "screen": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width", "height"],
+          "properties": {
+            "width": { "type": "integer", "minimum": 1 },
+            "height": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "onDeviceModel": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "asr": { "type": "string" },
+            "ocr": { "type": "string" }
+          }
+        }
+      }
+    },
+    "CaptureMeta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startedAt", "bucketMs", "sources"],
+      "properties": {
+        "startedAt": { "type": "string", "format": "date-time" },
+        "endedAt": { "type": "string", "format": "date-time" },
+        "bucketMs": {
+          "type": "integer",
+          "minimum": 100,
+          "default": 500,
+          "description": "时间桶宽度，默认 500ms。"
+        },
+        "screenSampleMs": {
+          "type": "integer",
+          "minimum": 200,
+          "description": "屏幕采样周期，默认 1000ms。"
+        },
+        "audioSampleRate": { "type": "integer", "default": 16000 },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "enum": ["screen", "accessibility", "audio"] }
+        },
+        "consent": {
+          "type": "string",
+          "enum": ["granted", "revoked"],
+          "description": "用户对本次采集与上传的授权状态；revoked 时不得离开设备。"
+        }
+      }
+    },
+    "Document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["docId", "title", "paragraphs"],
+      "properties": {
+        "docId": { "type": "string" },
+        "title": { "type": "string" },
+        "appPackage": { "type": "string" },
+        "totalChars": { "type": "integer", "minimum": 0 },
+        "paragraphs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/Paragraph" }
+        }
+      }
+    },
+    "Paragraph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paragraphId", "index", "charStart", "charEnd"],
+      "properties": {
+        "paragraphId": { "type": "string", "description": "形如 p07，稳定不变。" },
+        "index": { "type": "integer", "minimum": 0 },
+        "heading": { "type": "string" },
+        "charStart": { "type": "integer", "minimum": 0 },
+        "charEnd": { "type": "integer", "minimum": 0 },
+        "preview": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "前 120 字，仅用于 UI 展示，完整正文不落库。"
+        },
+        "terms": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "该段出现但未解释的术语，用于语义异常判定。"
+        }
+      }
+    },
+    "TimelineFrame": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "500ms 时间桶的聚合结果。screen/speech 允许为 null 表示该路无数据。",
+      "required": ["frameId", "t", "capturedAt", "action"],
+      "properties": {
+        "frameId": { "type": "string", "description": "形如 f0042。" },
+        "t": { "type": "integer", "minimum": 0, "description": "相对会话开始的毫秒偏移。" },
+        "capturedAt": { "type": "string", "format": "date-time" },
+        "screen": {
+          "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/ScreenObservation" }]
+        },
+        "speech": {
+          "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/SpeechSegment" }]
+        },
+        "action": { "$ref": "#/$defs/Action" },
+        "features": { "$ref": "#/$defs/FrameFeatures" }
+      }
+    },
+    "ScreenObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["docId", "textHash", "isDuplicate"],
+      "properties": {
+        "docId": { "type": "string" },
+        "paragraphId": { "type": ["string", "null"], "description": "当前主视区停靠的段落。" },
+        "text": { "type": "string", "description": "本帧可见文本（已去重、截断到可视区）。" },
+        "textHash": { "type": "string", "description": "可见文本的 xxh3/sha1 摘要，用于帧去重。" },
+        "isDuplicate": { "type": "boolean", "description": "与上一帧可见文本完全一致。" },
+        "progress": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "文档阅读进度。"
+        },
+        "ocrConfidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "source": { "enum": ["accessibility", "ocr"], "description": "文本来源，无障碍优先。" }
+      }
+    },
+    "SpeechSegment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segmentId", "text", "isFinal", "startMs"],
+      "properties": {
+        "segmentId": { "type": "string" },
+        "text": { "type": "string" },
+        "isFinal": { "type": "boolean", "description": "false 表示 VAD 尚未断句的部分结果。" },
+        "startMs": { "type": "integer", "minimum": 0 },
+        "endMs": { "type": "integer", "minimum": 0 },
+        "asrConfidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "lang": { "type": "string" }
+      }
+    },
+    "Action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "enum": ["none", "scroll", "click", "switch_app", "search", "erase", "type_text", "idle"],
+          "description": "行为通道；none 表示本桶无输入事件。"
+        },
+        "appPackage": { "type": "string" },
+        "targetParagraphId": { "type": "string" },
+        "scrollDelta": { "type": "integer" },
+        "query": { "type": "string", "description": "搜索词，仅 search 时存在。" }
+      }
+    },
+    "FrameFeatures": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "对齐阶段产出的可解释特征，判定引擎只读这些字段，不再回看原始数据。",
+      "properties": {
+        "dwellMs": { "type": "integer", "minimum": 0, "description": "在当前段落已连续停留的毫秒数。" },
+        "revisitCount": { "type": "integer", "minimum": 0, "description": "该段落被重新进入的次数。" },
+        "isStalled": { "type": "boolean", "description": "当前桶是否被标记为疑似卡住。" },
+        "attentionScore": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "StuckEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eventId", "kind", "fromMs", "toMs", "evidenceFrameIds", "confidence", "summary"],
+      "properties": {
+        "eventId": { "type": "string" },
+        "kind": { "enum": ["time_anomaly", "behavior_anomaly", "semantic_anomaly"] },
+        "paragraphId": { "type": "string" },
+        "term": { "type": "string", "description": "semantic_anomaly 下被跳过的术语。" },
+        "fromMs": { "type": "integer", "minimum": 0 },
+        "toMs": { "type": "integer", "minimum": 0 },
+        "fromFrameId": { "type": "string" },
+        "toFrameId": { "type": "string" },
+        "evidenceFrameIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "description": "证据帧。没有证据的卡壳事件不得进入找茬环节。"
+        },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "signals": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dwellMs": { "type": "integer", "minimum": 0 },
+            "baselineDwellMs": { "type": "integer", "minimum": 0 },
+            "revisitCount": { "type": "integer", "minimum": 0 },
+            "switchedApp": { "type": "boolean" },
+            "searchQuery": { "type": "string" },
+            "skippedTerm": { "type": "string" },
+            "skippedSentence": { "type": "string" }
+          }
+        },
+        "summary": { "type": "string", "maxLength": 200 }
+      }
+    },
+    "QuizItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["quizId", "eventId", "mode", "stem", "options", "explanation"],
+      "properties": {
+        "quizId": { "type": "string" },
+        "eventId": { "type": "string" },
+        "mode": { "enum": ["online", "offline_template"], "description": "断网时降级为 offline_template。" },
+        "questionType": {
+          "enum": ["counterfactual_quote"],
+          "description": "反事实找茬：1 个原文项 + 2 个基于原文的可验证改写项。"
+        },
+        "difficulty": { "enum": ["easy", "medium", "hard"] },
+        "stem": { "type": "string" },
+        "options": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/QuizOption" }
+        },
+        "explanation": { "type": "string" },
+        "model": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "QuizOption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["optionId", "text", "verdict", "evidenceFrameIds"],
+      "properties": {
+        "optionId": { "type": "string", "enum": ["A", "B", "C", "D"] },
+        "text": { "type": "string" },
+        "verdict": {
+          "enum": ["correct", "distractor"],
+          "description": "校验通过后写入；服务端下发题目时应剔除该字段。"
+        },
+        "rationale": { "type": "string", "description": "为什么对/错，必须能回指原文。" },
+        "evidenceFrameIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "mutation": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "仅干扰项存在：说明这一项由原文哪一句如何改写而来。",
+          "required": ["type", "originalText", "editedText", "sourceFrameId"],
+          "properties": {
+            "type": {
+              "enum": ["negation", "modality", "quantifier", "numeric", "relation_reverse"]
+            },
+            "originalText": { "type": "string", "description": "被改写的原文整句。" },
+            "editedText": { "type": "string", "description": "改写后的整句，必须与选项文本一致。" },
+            "changedToken": { "type": "string", "description": "改动的词对，例如 多数→少数。" },
+            "sourceFrameId": { "type": "string", "description": "原文句所在的证据帧。" }
+          }
+        }
+      }
+    }
+  }
+}
