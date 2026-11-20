@@ -30,6 +30,9 @@ class AudioCapture(
     private var running = true
 
     @Volatile
+    private var record: AudioRecord? = null
+
+    @Volatile
     var paused: Boolean = false
 
     fun start() {
@@ -39,6 +42,9 @@ class AudioCapture(
 
     fun stop() {
         running = false
+        // 先停录音解除 read 阻塞，循环才能立刻退出；
+        // 否则 join(800) 可能超时，旧线程继续持有麦克风并向 PCM 追加
+        runCatching { record?.stop() }
         runCatching { thread?.join(800) }
         thread = null
     }
@@ -62,6 +68,12 @@ class AudioCapture(
         )
         if (record.state != AudioRecord.STATE_INITIALIZED) {
             record.release()
+            return
+        }
+        this.record = record
+        if (!running) {
+            record.release()
+            this.record = null
             return
         }
 
@@ -112,6 +124,7 @@ class AudioCapture(
 
         runCatching { record.stop() }
         record.release()
+        this.record = null
     }
 
     private fun emitSegment(originMs: Long, startSample: Long, endSample: Long, peakDb: Double) {

@@ -200,6 +200,13 @@ class StuckDetector(private val session: TimelineSession) {
                             frame.t < visit.startMs &&
                             frame.action.type != ActionType.NONE
                     }
+                    // 搜索/删除是比滚动更强的「查证/改写」信号，显式读取并加成
+                    val gapSearchOrErase = frames.any { frame ->
+                        frame.t >= previous.endMs &&
+                            frame.t < visit.startMs &&
+                            (frame.action.type == ActionType.SEARCH ||
+                                frame.action.type == ActionType.ERASE)
+                    }
                     val gapBuckets = ((visit.startMs - previous.endMs) / bucketMs).toInt()
                     if (gapHasAction || gapBuckets < PAUSE_GAP_BUCKETS) {
                         val switchFrame = frames.firstOrNull { frame ->
@@ -212,15 +219,17 @@ class StuckDetector(private val session: TimelineSession) {
                             0.55 +
                                 (if (gap <= QUICK_RETURN_MS) 0.15 else 0.05) +
                                 (if (switched) 0.1 else 0.0) +
+                                (if (gapSearchOrErase) 0.05 else 0.0) +
                                 (if (visit.maxRevisitCount >= 2) 0.05 else 0.0)
                             ).coerceAtMost(0.9)
 
                         val packageLabel = switchFrame?.action?.appPackage ?: "其他应用"
+                        val searchNote = if (gapSearchOrErase) "，期间有搜索/删除动作" else ""
                         val summary = if (switched) {
-                            "切到 $packageLabel ${formatSeconds(gap)}后回到 ${visit.paragraphId}，疑似回看查证"
+                            "切到 $packageLabel ${formatSeconds(gap)}后回到 ${visit.paragraphId}，疑似回看查证$searchNote"
                         } else {
                             "离开 ${formatSeconds(gap)} 后回看 ${visit.paragraphId}" +
-                                "（第 ${visit.maxRevisitCount + 1} 次进入）"
+                                "（第 ${visit.maxRevisitCount + 1} 次进入）$searchNote"
                         }
 
                         events += StuckEvent(

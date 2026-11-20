@@ -57,7 +57,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Composable
-fun ArchiveScreen(session: TimelineSession, onOpenSession: () -> Unit) {
+fun ArchiveScreen(
+    session: TimelineSession,
+    generated: Boolean = false,
+    onOpenSession: () -> Unit
+) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var refreshKey by remember { mutableStateOf(0) }
@@ -95,6 +99,14 @@ fun ArchiveScreen(session: TimelineSession, onOpenSession: () -> Unit) {
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(top = 4.dp)
                     )
+                    if (!generated) {
+                        Text(
+                            "「本次学习」展示的是假数据示例；跨会话累计仍来自本机真实记录。",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                    }
                 }
             }
 

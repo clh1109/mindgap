@@ -28,6 +28,8 @@ internal object QuizValidator {
             return problems
         }
         if (quiz.stem.isBlank()) problems += "题干为空"
+        // 与服务端 validate_quiz 对齐：解析必须非空
+        if (quiz.explanation.isNullOrBlank()) problems += "解析为空"
         if (quiz.options.size != 3) problems += "选项数不是 3"
         if (quiz.options.map { it.optionId } != listOf("A", "B", "C")) {
             problems += "选项编号不是 A/B/C"
@@ -115,6 +117,17 @@ internal object QuizValidator {
             }
             if (mutation.sourceFrameId !in option.evidenceFrameIds) {
                 problems += "${option.optionId} 来源帧不在证据帧中"
+            }
+            // 与服务端对齐：来源帧必须自身包含原文且落在卡壳段，
+            // 不能只靠「任一证据帧包含」通过校验
+            val sourceFrame = frameById[mutation.sourceFrameId]
+            if (sourceFrame != null) {
+                val sourceText = normalizeForEvidence(sourceFrame.screen?.text.orEmpty())
+                if (sourceFrame.screen?.paragraphId != eventParagraphId ||
+                    !sourceText.contains(original)
+                ) {
+                    problems += "${option.optionId} 来源帧自身未包含卡壳段原文"
+                }
             }
             val grounded = frames.any { frame ->
                 frame.screen?.paragraphId == eventParagraphId &&

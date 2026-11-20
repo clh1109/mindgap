@@ -13,6 +13,8 @@ internal object TermExtractor {
     private val WORD = Regex("""[A-Za-z][A-Za-z0-9_\-]{2,}""")
     private val QUOTED = Regex("""[「“《]([^」”》]{2,16})[」”》]""")
 
+    // 只保留通用英语停用词：server/log/leader/node 等领域词恰是技术语料的核心术语，
+    // 放进停用词会让语义通道对分布式/系统类内容整体失明
     private val STOPWORDS = setOf(
         "the", "and", "for", "with", "this", "that", "from", "have", "will", "would",
         "can", "could", "should", "are", "was", "were", "not", "but", "you", "your",
@@ -20,9 +22,8 @@ internal object TermExtractor {
         "had", "its", "our", "out", "one", "two", "use", "using", "used", "into",
         "than", "then", "more", "most", "some", "such", "only", "also", "may", "might",
         "must", "about", "after", "before", "between", "each", "other", "over", "same",
-        "very", "well", "make", "made", "like", "just", "time", "data", "server",
-        "servers", "log", "logs", "leader", "leaders", "state", "term", "terms",
-        "node", "nodes", "system", "systems", "first", "second", "every", "here",
+        "very", "well", "make", "made", "like", "just", "time", "data",
+        "first", "second", "every", "here",
         "there", "these", "those", "been", "being", "does", "doing", "done", "shall",
         "upon", "while", "within", "without", "through", "during", "should", "many"
     )

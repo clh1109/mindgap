@@ -80,7 +80,7 @@ object CloudQuizClient {
                 .filter { it.paragraphId != focus.paragraphId }
                 .sortedBy { abs(it.order - focus.order) }
                 .take(2)
-            if (context.isEmpty()) return@withContext null
+            // 服务端明确支持空 context（单段落会话也能出题），这里不再拦截
 
             val request = CloudGenerateRequest(
                 sessionId = session.sessionId,

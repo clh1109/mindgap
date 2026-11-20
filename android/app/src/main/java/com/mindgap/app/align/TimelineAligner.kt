@@ -141,6 +141,11 @@ class TimelineAligner(
             val pause = pauseIntervals.getOrNull(pauseCursor)
             // 只要与暂停区间有交集就按空帧处理，避免边界桶把离开时间计入停留
             if (pause != null && t < pause.to && bucketEnd > pause.from) {
+                // 暂停必须切断段落上下文：恢复后停留重新累计、文本重新输出、记一次新进入，
+                // 与 eval/generate_fixtures.py 的暂停重置保持一致
+                dwellMs = 0L
+                previousParagraphId = null
+                previousScreenHash = null
                 frames += TimelineFrame(
                     frameId = frameId,
                     t = t,

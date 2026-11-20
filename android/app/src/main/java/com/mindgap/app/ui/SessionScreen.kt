@@ -29,9 +29,14 @@ import com.mindgap.app.data.model.SourceKind
 import com.mindgap.app.data.model.TimelineSession
 
 @Composable
-fun SessionScreen(session: TimelineSession, onOpenReplay: () -> Unit) {
+fun SessionScreen(
+    session: TimelineSession,
+    onOpenReplay: () -> Unit,
+    onConsentChange: ((Boolean) -> Unit)? = null
+) {
+    // null 视为未授权：只有显式 granted 才算授权，避免缺字段被误读为同意上传
     var consentGranted by rememberSaveable {
-        mutableStateOf(session.capture.consent != Consent.REVOKED)
+        mutableStateOf(session.capture.consent == Consent.GRANTED)
     }
     val duration = session.frames.lastOrNull()?.t ?: 0L
 
@@ -82,7 +87,11 @@ fun SessionScreen(session: TimelineSession, onOpenReplay: () -> Unit) {
                         )
                         Spacer(Modifier.height(2.dp))
                         Text(
-                            "录制期间常驻状态提示，可随时暂停或删除",
+                            if (onConsentChange == null) {
+                                "示例会话：授权开关不可用，真实会话请在采集页设置"
+                            } else {
+                                "录制期间常驻状态提示，可随时暂停或删除"
+                            },
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -90,7 +99,11 @@ fun SessionScreen(session: TimelineSession, onOpenReplay: () -> Unit) {
                     Spacer(Modifier.width(12.dp))
                     Switch(
                         checked = consentGranted,
-                        onCheckedChange = { consentGranted = it }
+                        enabled = onConsentChange != null,
+                        onCheckedChange = { checked ->
+                            consentGranted = checked
+                            onConsentChange?.invoke(checked)
+                        }
                     )
                 }
             }

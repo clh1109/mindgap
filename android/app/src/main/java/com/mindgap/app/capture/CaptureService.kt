@@ -36,6 +36,7 @@ import java.io.FileOutputStream
 import java.nio.ByteBuffer
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 /**
  * M1 前台采集服务：屏幕指纹（1fps）+ 麦克风 PCM + 会话状态维护。
@@ -74,6 +75,8 @@ class CaptureService : Service() {
     private var virtualDisplay: VirtualDisplay? = null
     private var imageReader: ImageReader? = null
     private var projectionThread: HandlerThread? = null
+    /** 屏幕采样跑在投影线程而非主线程：acquireLatestImage 与关键帧像素拷贝都不阻塞 UI。 */
+    private var screenHandler: Handler? = null
     private var audioCapture: AudioCapture? = null
     private var running = false
 
@@ -150,6 +153,7 @@ class CaptureService : Service() {
 
         projectionThread = HandlerThread("mindgap-screen").apply { start() }
         val threadHandler = Handler(projectionThread!!.looper)
+        screenHandler = threadHandler
 
         // API 34 起必须先注册回调，再创建 VirtualDisplay
         mediaProjection.registerCallback(object : MediaProjection.Callback() {
@@ -181,7 +185,7 @@ class CaptureService : Service() {
             threadHandler
         )
 
-        handler.postDelayed(screenTick, SCREEN_INTERVAL_MS)
+        screenHandler?.postDelayed(screenTick, SCREEN_INTERVAL_MS)
         handler.postDelayed(elapsedTick, 1000L)
 
         if (includeAudio) {
@@ -217,7 +221,7 @@ class CaptureService : Service() {
             if (CaptureSession.state.value.phase == CapturePhase.RUNNING) {
                 sampleScreenOnce()
             }
-            handler.postDelayed(this, SCREEN_INTERVAL_MS)
+            screenHandler?.postDelayed(this, SCREEN_INTERVAL_MS)
         }
     }
 
@@ -290,8 +294,8 @@ class CaptureService : Service() {
     }
 
     /**
-     * 把当前 ImageReader 缓冲复制成 JPEG。像素复制必须在 image.close() 之前完成，
-     * 压缩与缩放放到单线程池，避免 1fps 采样阻塞主线程。
+     * 把当前 ImageReader 缓冲复制成 JPEG。像素复制必须在 image.close() 之前完成；
+     * 整个采样（含拷贝）运行在投影线程，压缩与缩放再放到单线程池，主线程零负担。
      */
     private fun saveKeyframe(image: Image, bits: Long): String? {
         val sessionId = keyframeSessionId ?: return null
@@ -319,7 +323,7 @@ class CaptureService : Service() {
         }
 
         val file = File(EventStore.framesDir(this, sessionId), "${CaptureSession.nowMs()}-$bits.jpg")
-        executor.execute {
+        val compress = Runnable {
             val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
             try {
                 bitmap.copyPixelsFromBuffer(ByteBuffer.wrap(pixels))
@@ -348,7 +352,10 @@ class CaptureService : Service() {
                 bitmap.recycle()
             }
         }
-        return file.absolutePath
+        // 停止收尾时线程池可能已 shutdown：提交失败就放弃本张关键帧，
+        // 绝不把没有落盘把握的路径写进事件流
+        val submitted = runCatching { executor.execute(compress) }.isSuccess
+        return if (submitted) file.absolutePath else null
     }
 
     private fun startForegroundCompat(includeAudio: Boolean) {
@@ -365,12 +372,22 @@ class CaptureService : Service() {
         if (!running) return
         running = false
         handler.removeCallbacksAndMessages(null)
+        screenHandler?.removeCallbacksAndMessages(null)
+        screenHandler = null
 
         audioCapture?.stop()
         audioCapture = null
-        keyframeExecutor?.shutdown()
+        // 等待在途关键帧压缩落盘后再 finish，M2 才不会读到半截 JPEG。
+        // 上限 3s：关键帧最多积压数张，实测远小于此；超时则强制丢弃未完成任务
+        val executor = keyframeExecutor
         keyframeExecutor = null
         keyframeSessionId = null
+        executor?.shutdown()
+        runCatching {
+            if (executor != null && !executor.awaitTermination(3, TimeUnit.SECONDS)) {
+                executor.shutdownNow()
+            }
+        }
         virtualDisplay?.release()
         virtualDisplay = null
         imageReader?.close()

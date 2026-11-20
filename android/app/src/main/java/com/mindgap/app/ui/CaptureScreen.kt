@@ -101,7 +101,17 @@ fun CaptureScreen(
         judgement.stage == JudgementStage.RUNNING ||
         quiz.stage == QuizStage.RUNNING
 
-    LaunchedEffect(snapshot.sessionId, alignmentDone?.capture?.consent) {
+    // 足迹统计随采集阶段与各流水线进度刷新：M2 落盘 perception.json、
+    // M4/M5 原地更新时间轴都会改变占用，不能只等 sessionId/授权变化
+    LaunchedEffect(
+        snapshot.sessionId,
+        snapshot.phase,
+        alignmentDone?.capture?.consent,
+        perception.stage,
+        alignment.stage,
+        judgement.stage,
+        quiz.stage
+    ) {
         val sessionId = snapshot.sessionId
         footprint = if (sessionId == null) {
             null
@@ -881,11 +891,16 @@ fun CaptureScreen(
 
         item {
             SectionCard("数据与隐私（M6）") {
+                val uploadGranted = alignmentDone?.capture?.consent == Consent.GRANTED
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Tag("本地优先", accent = true)
                     Spacer(Modifier.width(8.dp))
                     Text(
-                        "当前版本不上传任何数据",
+                        if (uploadGranted) {
+                            "云端生成已授权：仅上传压缩文本片段与摘要"
+                        } else {
+                            "未授权上传：当前所有数据不出设备"
+                        },
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )

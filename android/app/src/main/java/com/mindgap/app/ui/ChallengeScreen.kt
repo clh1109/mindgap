@@ -44,13 +44,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Composable
-fun ChallengeScreen(session: TimelineSession) {
+fun ChallengeScreen(session: TimelineSession, generated: Boolean = false) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val frameById = remember(session) { session.frames.associateBy { it.frameId } }
     val eventById = remember(session) { session.stuckEvents.associateBy { it.eventId } }
-    val answers = remember(session) { mutableStateMapOf<String, String>() }
-    val confidenceByQuiz = remember(session) { mutableStateMapOf<String, ConfidenceLevel>() }
+    // 作答状态只按 sessionId 记忆：M4/M5 后台回写同会话新实例时不能清空已答状态，
+    // 否则用户可重复作答，把隐性盲区统计刷高
+    val answers = remember(session.sessionId) { mutableStateMapOf<String, String>() }
+    val confidenceByQuiz = remember(session.sessionId) { mutableStateMapOf<String, ConfidenceLevel>() }
 
     // 切页回来时恢复已答与信心，避免重复记录把隐性盲区统计刷高
     LaunchedEffect(session.sessionId) {
@@ -70,7 +72,7 @@ fun ChallengeScreen(session: TimelineSession) {
         return quiz.options.firstOrNull { it.optionId == selected }?.verdict
     }
 
-    val answered = answers.size
+    val answered = session.quizItems.count { answers[it.quizId] != null }
     val correct = session.quizItems.count { selectedVerdict(it) == Verdict.CORRECT }
     val hiddenBlind = session.quizItems.count { quiz ->
         confidenceByQuiz[quiz.quizId] == ConfidenceLevel.HIGH &&
@@ -91,6 +93,14 @@ fun ChallengeScreen(session: TimelineSession) {
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(top = 4.dp)
                 )
+                if (!generated) {
+                    Text(
+                        "当前展示的是假数据示例，不是你的真实会话。",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.padding(top = 4.dp)
+                    )
+                }
             }
         }
 

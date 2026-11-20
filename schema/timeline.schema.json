@@ -190,7 +190,7 @@
         "docId": { "type": "string" },
         "paragraphId": { "type": ["string", "null"], "description": "当前主视区停靠的段落。" },
         "text": { "type": "string", "description": "本帧可见文本（已去重、截断到可视区）。" },
-        "textHash": { "type": "string", "description": "可见文本的 xxh3/sha1 摘要，用于帧去重。" },
+        "textHash": { "type": "string", "description": "可见文本归一化（compact）后的 SHA-256 摘要，用于帧去重。" },
         "isDuplicate": { "type": "boolean", "description": "与上一帧可见文本完全一致。" },
         "progress": {
           "type": "number",

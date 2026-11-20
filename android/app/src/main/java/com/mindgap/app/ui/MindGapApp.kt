@@ -119,9 +119,13 @@ fun MindGapApp(session: TimelineSession) {
                         session = activeSession,
                         generated = alignment.session != null
                     )
-                    Tab.CHALLENGE -> ChallengeScreen(activeSession)
+                    Tab.CHALLENGE -> ChallengeScreen(
+                        activeSession,
+                        generated = alignment.session != null
+                    )
                     Tab.ARCHIVE -> ArchiveScreen(
                         session = activeSession,
+                        generated = alignment.session != null,
                         onOpenSession = {
                             showMockSession = false
                             currentTab = Tab.REPLAY.name

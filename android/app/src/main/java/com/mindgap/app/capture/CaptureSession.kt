@@ -5,6 +5,7 @@ import android.os.SystemClock
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import java.io.File
 import java.util.UUID
 
@@ -38,6 +39,7 @@ object CaptureSession {
     private var lastScreenTextHash: String? = null
     private var lastScreenTextAt = 0L
 
+    @Synchronized
     fun start(context: Context, includeAudio: Boolean): String {
         val sessionId = UUID.randomUUID().toString()
         startElapsedRealtime = SystemClock.elapsedRealtime()
@@ -63,18 +65,21 @@ object CaptureSession {
         return sessionId
     }
 
+    @Synchronized
     fun pause() {
         if (_state.value.phase != CapturePhase.RUNNING) return
         emit(RawEventType.MARKER, note = "pause")
-        _state.value = _state.value.copy(phase = CapturePhase.PAUSED, message = "已暂停，事件不再写入")
+        _state.update { it.copy(phase = CapturePhase.PAUSED, message = "已暂停，事件不再写入") }
     }
 
+    @Synchronized
     fun resume() {
         if (_state.value.phase != CapturePhase.PAUSED) return
-        _state.value = _state.value.copy(phase = CapturePhase.RUNNING, message = "")
+        _state.update { it.copy(phase = CapturePhase.RUNNING, message = "") }
         emit(RawEventType.MARKER, note = "resume")
     }
 
+    @Synchronized
     fun finish(message: String = "采集结束，原始事件已落盘") {
         val phase = _state.value.phase
         if (phase == CapturePhase.IDLE || phase == CapturePhase.FINISHED) return
@@ -88,9 +93,13 @@ object CaptureSession {
     }
 
     fun onTick(elapsedMs: Long) {
-        val phase = _state.value.phase
-        if (phase == CapturePhase.RUNNING || phase == CapturePhase.PAUSED) {
-            _state.value = _state.value.copy(elapsedMs = elapsedMs)
+        // 主线程定时回调与音频/无障碍线程的 emit 并发：必须用 CAS 更新，避免旧快照覆盖计数
+        _state.update { current ->
+            if (current.phase == CapturePhase.RUNNING || current.phase == CapturePhase.PAUSED) {
+                current.copy(elapsedMs = elapsedMs)
+            } else {
+                current
+            }
         }
     }
 
@@ -119,9 +128,12 @@ object CaptureSession {
     /**
      * 记录音频线程真正开始录音的会话时刻。
      * PCM 文件从此刻起按 16k/mono/16bit 连续写入，M2 用它把采样位置换算回会话时间。
+     * 音频起点是 PCM 文件的事实而非采集内容：暂停时也必须写入，
+     * 否则录音线程初始化期间按下暂停会永久丢失原点，M2 只能回退 0L 导致语音时间轴整体错位。
      */
     fun recordAudioStart(originMs: Long) {
-        if (_state.value.phase != CapturePhase.RUNNING) return
+        val phase = _state.value.phase
+        if (phase == CapturePhase.IDLE || phase == CapturePhase.FINISHED) return
         emit(RawEventType.AUDIO_START, startMs = originMs, note = "16k/mono/pcm16")
     }
 
@@ -141,6 +153,7 @@ object CaptureSession {
     }
 
     /** 删除会话数据后清空界面状态；采集中不处理。 */
+    @Synchronized
     fun resetAfterDelete(sessionId: String) {
         val current = _state.value
         if (current.sessionId != sessionId) return
@@ -181,22 +194,23 @@ object CaptureSession {
         )
         EventStore.append(event)
 
-        val snapshot = _state.value
         val isKeyframe = type == RawEventType.SCREEN_FRAME && imagePath != null
-        _state.value = snapshot.copy(
-            screenTextCount = snapshot.screenTextCount + if (type == RawEventType.SCREEN_TEXT) 1 else 0,
-            screenFrameCount = snapshot.screenFrameCount + if (type == RawEventType.SCREEN_FRAME) 1 else 0,
-            keyframeCount = snapshot.keyframeCount + if (isKeyframe) 1 else 0,
-            audioSegmentCount = snapshot.audioSegmentCount + if (type == RawEventType.AUDIO_SEGMENT) 1 else 0,
-            actionCount = snapshot.actionCount + if (
-                type == RawEventType.APP_SWITCH ||
-                type == RawEventType.SCROLL ||
-                type == RawEventType.CLICK ||
-                type == RawEventType.SEARCH ||
-                type == RawEventType.ERASE
-            ) 1 else 0,
-            lastEvent = describe(event)
-        )
+        _state.update { snapshot ->
+            snapshot.copy(
+                screenTextCount = snapshot.screenTextCount + if (type == RawEventType.SCREEN_TEXT) 1 else 0,
+                screenFrameCount = snapshot.screenFrameCount + if (type == RawEventType.SCREEN_FRAME) 1 else 0,
+                keyframeCount = snapshot.keyframeCount + if (isKeyframe) 1 else 0,
+                audioSegmentCount = snapshot.audioSegmentCount + if (type == RawEventType.AUDIO_SEGMENT) 1 else 0,
+                actionCount = snapshot.actionCount + if (
+                    type == RawEventType.APP_SWITCH ||
+                    type == RawEventType.SCROLL ||
+                    type == RawEventType.CLICK ||
+                    type == RawEventType.SEARCH ||
+                    type == RawEventType.ERASE
+                ) 1 else 0,
+                lastEvent = describe(event)
+            )
+        }
     }
 
     private fun describe(event: RawEvent): String {

@@ -374,3 +374,31 @@
   - mock 现有 6 条 mutation 仍全部通过 verify；离线评测报告与修复前逐字节一致（10/10 出题、20/20 改写、0 校验失败），无回归。
 - 影响：旧会话若已生成过双重否定干扰项，重跑 M5 即被新题替换。
 - 重构建（2026-11-20）：`:app:assembleDebug` 成功（17s，增量），APK 已更新到 `dist/MindGap-debug.apk`（105,503,514 B，sha256 `a149ce2f…05d9`）；已确认 classes6.dex 含新增否定前缀词表（未能/不会/不可 等），修复在包内。
+
+### 审计核实与批量修复（2026-11-20 已实现并测试）
+
+- 背景：外部审计给出 6 个 Bug + 3 条端云不一致 + 3 条算法局限。先做只读逐条核实（报告存于仓库外 `E:\软创\mindgap审计核实报告.md`），再按优先级修复。
+- 核实纠正：**「ASR 时间戳 Int 溢出」不成立**——sherpa-onnx 2.0.1 的 `SpeechSegment.start` 是 Long（AAR javap `getStart()J` + 编译产物常量池双重证实），`start * 1000` 走 64 位运算；旧版 API 才是 Int。仍在 `OfflineTranscriber.kt:121` 补 `1000L` 作防御。
+- 高优先级修复：
+  - M3 暂停边界（`TimelineAligner.kt`）：暂停桶重置 `dwellMs / previousParagraphId / previousScreenHash`，恢复后停留重算、文本重新输出、记一次新进入，与 `generate_fixtures.py` 一致；新增回归测试「暂停会切断停留与文本去重上下文」。
+  - AUDIO_START 丢失（`CaptureSession.recordAudioStart`）：音频起点是 PCM 事实而非采集内容，PAUSED 也写入（仅 IDLE/FINISHED 拒绝），杜绝「录音线程初始化期间按暂停 → 原点回退 0L」。
+  - 状态并发（`CaptureSession`）：`onTick` 与 `emit` 计数改 `StateFlow.update` CAS；`start/pause/resume/finish/resetAfterDelete` 加 `@Synchronized`，与 emit 同锁。
+  - 端云校验对称化：服务端补选项文本空白校验（堵「空文本正确项靠空串子串恒真过审」漏洞）；客户端补 explanation 非空校验；双方新增「`sourceFrameId` 帧自身必须含原文且落在卡壳段」；`_KEY_STORE` 加 `threading.Lock`。
+- 中优先级修复：
+  - 关键帧竞态（`CaptureService`）：`stopCapture` 对压缩线程池 `shutdown + awaitTermination(3s)` 后才 finish；提交压缩失败不再返回悬空路径；屏幕采样（acquireLatestImage + 全屏像素拷贝）整体移到投影线程，主线程零负担。
+  - 音频停止顺序（`AudioCapture`）：`stop()` 先 `record.stop()` 解除 read 阻塞再 join，避免线程泄漏持有麦克风。
+  - 挑战页状态（`ChallengeScreen`）：作答/信心记忆键由 `remember(session)` 改 `remember(session.sessionId)`，M4/M5 后台回写不再清空已答状态；已答数按当前题目集合统计。
+  - 授权语义（`SessionScreen`）：`consent == null` 视为未授权；示例会话开关禁用并明示，真实授权入口仍在采集页（已持久化）。
+  - 云端客户端（`CloudQuizClient`）：删除空 context 拦截，单段落会话也可云端出题（服务端测试本就覆盖空 context）。
+  - 隐私文案（`CaptureScreen`）：「当前版本不上传任何数据」改为随授权状态动态展示；足迹统计键补采集阶段与 M2–M5 流水线阶段。
+  - mock 回退显式化（`MindGapApp/ChallengeScreen/ArchiveScreen`）：删除会话回退 mock 时，找茬/档案页与回放页一样明示「假数据示例」。
+- 低优先级修复：
+  - `TermExtractor.STOPWORDS` 移除 server/log/leader/node/state/term/system 等 Raft 领域词（它们是技术语料核心术语，不应被停用）。
+  - `StuckDetector.detectRevisits` 显式读取空档内 SEARCH/ERASE：置信度 +0.05、摘要注明「期间有搜索/删除动作」，noteText 的声明与实现对齐。
+  - `schema/timeline.schema.json` textHash 描述由 xxh3/sha1 更正为 SHA-256（与 FrameDedup 实现一致）。
+- 验证（均已实际执行）：
+  - JVM：`:app:testDebugUnitTest` 13/13 通过（新增暂停回归 1 例，12→13）；`:app:assembleDebug` BUILD SUCCESSFUL。
+  - 评测：15 会话 P/R/F1 仍 100%（TP 10/FP 0/FN 0），10 题、20/20 可验证改写、0 校验失败；`build/reports/mindgap-eval/report.md` 与仓库 `eval/report.md` 逐字节一致，无回归。
+  - 服务端：`test_quiz_logic.py` 新增「空文本选项拒绝」「来源帧自身不含原文拒绝」两例，全部通过。
+  - APK 已更新到 `dist/MindGap-debug.apk`（105,639,044 B，sha256 `c608be56…4e5a`）。
+- 仍未验证：真机权限弹窗 / 国产 ROM 保活 / 真人试用；并发修复核实的是竞态路径消除，未做压力复现；云端真实 LLM Key 路径未联调。

@@ -118,7 +118,8 @@ class OfflineTranscriber(
             }.getOrElse { "" }
             if (text.isEmpty()) continue
 
-            val startMs = originMs + segment.start * 1000 / SAMPLE_RATE
+            // sherpa-onnx 2.0.1 的 segment.start 为 Long；显式 1000L 防御旧版 Int API 的溢出
+            val startMs = originMs + segment.start * 1000L / SAMPLE_RATE
             val endMs = startMs + segment.samples.size * 1000L / SAMPLE_RATE
             out += SpeechTranscript(
                 segmentId = "s${out.size + 1}",

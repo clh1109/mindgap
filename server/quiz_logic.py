@@ -15,6 +15,7 @@ import json
 import os
 import random
 import re
+import threading
 import urllib.request
 import zlib
 from datetime import datetime, timezone
@@ -97,6 +98,8 @@ NEGATION_PREFIXES = (
 )
 
 _KEY_STORE: dict[str, dict[str, Any]] = {}
+# FastAPI 同步端点跑在线程池里，登记/淘汰/读取必须加锁
+_KEY_STORE_LOCK = threading.Lock()
 
 
 class QuizValidationError(Exception):
@@ -298,6 +301,8 @@ def validate_quiz(quiz: dict[str, Any], request: dict[str, Any]) -> list[str]:
 
     for option in options:
         option_id = option.get("optionId")
+        if not (option.get("text") or "").strip():
+            problems.append(f"{option_id} 选项文本为空")
         evidence_ids = option.get("evidenceFrameIds") or []
         if not evidence_ids:
             problems.append(f"{option_id} 缺少证据帧")
@@ -335,6 +340,14 @@ def validate_quiz(quiz: dict[str, Any], request: dict[str, Any]) -> list[str]:
             problems.append(f"{option_id} 来源帧未提供")
         original = normalize(mutation.get("originalText") or "")
         edited = normalize(mutation.get("editedText") or "")
+        # 来源帧必须自身包含原文且落在卡壳段，不能只靠「任一证据帧包含」蒙混
+        if source_frame in allowed:
+            source_item = allowed[source_frame]
+            if (
+                source_item.get("paragraphId") != focus_pid
+                or original not in normalize(source_item.get("text") or "")
+            ):
+                problems.append(f"{option_id} 来源帧自身未包含卡壳段原文")
         if original == edited:
             problems.append(f"{option_id} 改写前后相同")
         if not original or original not in focus_norm:
@@ -646,20 +659,22 @@ def generate_quiz(request: dict[str, Any]) -> dict[str, Any]:
             raise QuizValidationError("模板题未通过校验：" + "；".join(problems))
 
     correct = next(o for o in quiz["options"] if o["verdict"] == "correct")
-    _KEY_STORE[quiz["quizId"]] = {
-        "correctOptionId": correct["optionId"],
-        "rationale": correct.get("rationale"),
-        "evidenceFrameIds": correct.get("evidenceFrameIds") or [],
-        "createdAt": quiz.get("createdAt"),
-    }
-    if len(_KEY_STORE) > MAX_KEY_STORE:
-        oldest = next(iter(_KEY_STORE))
-        _KEY_STORE.pop(oldest, None)
+    with _KEY_STORE_LOCK:
+        _KEY_STORE[quiz["quizId"]] = {
+            "correctOptionId": correct["optionId"],
+            "rationale": correct.get("rationale"),
+            "evidenceFrameIds": correct.get("evidenceFrameIds") or [],
+            "createdAt": quiz.get("createdAt"),
+        }
+        if len(_KEY_STORE) > MAX_KEY_STORE:
+            oldest = next(iter(_KEY_STORE))
+            _KEY_STORE.pop(oldest, None)
     return quiz
 
 
 def answer_quiz(quiz_id: str, option_id: str) -> dict[str, Any] | None:
-    entry = _KEY_STORE.get(quiz_id)
+    with _KEY_STORE_LOCK:
+        entry = _KEY_STORE.get(quiz_id)
     if entry is None:
         return None
     return {

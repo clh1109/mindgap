@@ -158,6 +158,24 @@ def main() -> None:
     wrong_type["questionType"] = "original_choice"
     assert quiz_logic.validate_quiz(wrong_type, TIME_REQUEST), "错误题型应被拒绝"
 
+    # 空文本选项（尤其正确项）必须被拒绝：空串是任何文本的子串，不能靠回指蒙混
+    blank_text = json.loads(json.dumps(time_quiz))
+    blank_correct = next(o for o in blank_text["options"] if o["verdict"] == "correct")
+    blank_correct["text"] = "   "
+    assert quiz_logic.validate_quiz(blank_text, TIME_REQUEST), "空文本选项应被拒绝"
+
+    # sourceFrameId 指向的帧自身必须包含原文：只靠「任一证据帧包含」不够
+    wrong_source_request = json.loads(json.dumps(TIME_REQUEST))
+    wrong_source_request["focus"]["evidence"].append(
+        {"frameId": "f0001", "text": "另一段不含原文的屏幕文字，长度足够。"}
+    )
+    wrong_source = json.loads(json.dumps(time_quiz))
+    distractor = next(o for o in wrong_source["options"] if o["verdict"] == "distractor")
+    distractor["evidenceFrameIds"] = ["f0000", "f0001"]
+    distractor["mutation"]["sourceFrameId"] = "f0001"
+    problems = quiz_logic.validate_quiz(wrong_source, wrong_source_request)
+    assert any("来源帧自身" in p for p in problems), problems
+
     # 反事实题不再依赖 context；缺 context 也应能出题
     no_context = expect_valid({**TIME_REQUEST, "context": []})
     assert len(no_context["options"]) == 3
